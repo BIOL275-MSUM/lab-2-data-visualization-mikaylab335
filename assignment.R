@@ -1,18 +1,34 @@
-library(tidyverse)
-#> ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──
-#> ✔ ggplot2 3.3.2     ✔ purrr   0.3.4
-#> ✔ tibble  3.0.3     ✔ dplyr   1.0.2
-#> ✔ tidyr   1.1.2     ✔ stringr 1.4.0
-#> ✔ readr   1.4.0     ✔ forcats 0.5.0
-#> ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-#> ✖ dplyr::filter() masks stats::filter()
-#> ✖ dplyr::lag()    masks stats::lag()
-install.packages("tidyverse")
+
+# Load Packages -----------------------------------------------------------
+
+# Loading Packages:
 library(tidyverse)
 library(palmerpenguins)
-penguins
-view(penguins)
-library(ggplot2)
+
+# Getting Penguin information to look at:
+View(penguins)
+
+# Scatter Plots -----------------------------------------------------------
+
+# Making Plots of information (3 different types): 
+  # All Island and Species on same graph: 
 ggplot(data = penguins) +
-  geom_point(mapping = aes(x = body_mass_g, y = flipper_length_mm))
-  
+  geom_point(mapping = aes(x = body_mass_g, 
+                           y = flipper_length_mm, 
+                           color = species, 
+                           shape = island))
+
+# Separating Information by Species:
+ggplot(data = penguins) +
+  geom_point(mapping = aes(x = body_mass_g,
+                           y = flipper_length_mm,
+                           color = species,
+                           shape = island)) +
+  facet_wrap( ~ species, nrow = 1)
+
+  # Separating Information by Species and Island:
+ggplot(data = penguins) +
+  geom_point(mapping = aes(x = body_mass_g, 
+                           y = flipper_length_mm, 
+                           color = species, shape = island)) +
+  facet_grid(island ~ species)

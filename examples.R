@@ -1,18 +1,17 @@
+
+# Load packages:
+
 library(tidyverse)
-#> ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──
-#> ✔ ggplot2 3.3.2     ✔ purrr   0.3.4
-#> ✔ tibble  3.0.3     ✔ dplyr   1.0.2
-#> ✔ tidyr   1.1.2     ✔ stringr 1.4.0
-#> ✔ readr   1.4.0     ✔ forcats 0.5.0
-#> ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-#> ✖ dplyr::filter() masks stats::filter()
-#> ✖ dplyr::lag()    masks stats::lag()
-install.packages("tidyverse")
-library(tidyverse)
-library(palmerpenguins)
-penguins
+# not needed: library(ggplot2)
+
 view(penguins)
-library(ggplot2)
-ggplot(data = penguins)
+
+ggplot(data = mpg)
 ggplot(data = mpg) + 
   geom_point(mapping = aes(x = displ, y = hwy))
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy)) + 
+  facet_wrap(~ class, nrow = 2)
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy)) + 
+  facet_grid(drv ~ cyl)
